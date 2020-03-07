@@ -9,6 +9,7 @@
         class="select-all-btn"
         slot="prepend"
         icon="el-icon-arrow-down"
+        @click="$emit('select-all')"
       ></el-button>
     </el-input>
   </form>

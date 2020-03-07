@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p class="title">Todos</p>
-    <todo-input @add-todo="addTodo"></todo-input>
+    <todo-input @add-todo="addTodo" @select-all="markAllCompleted"></todo-input>
     <div class="todo-list-wrapper">
       <todo-list
         v-for="todo in todos"
@@ -42,6 +42,12 @@ export default {
         id: Date.now(),
         content: input,
         active: true
+      });
+    },
+    markAllCompleted: function() {
+      this.todos = this.todos.map(item => {
+        item.active = !item.active;
+        return item;
       });
     },
     toggleActive: function(todo) {
