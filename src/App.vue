@@ -2,6 +2,9 @@
   <div id="app">
     <p class="title">Todos</p>
     <todo-input @add-todo="addTodo"></todo-input>
+    <ul>
+      <li v-for="todo in todos" :key="todo.id">{{ todo.content }}</li>
+    </ul>
   </div>
 </template>
 
@@ -12,9 +15,21 @@ export default {
   components: {
     TodoInput
   },
+  data() {
+    return {
+      todos: []
+    };
+  },
   methods: {
-    addTodo: function(todo) {
-      console.log(todo);
+    addTodo: function(input) {
+      this.todos.push({
+        id: Date.now(),
+        content: input
+      });
+      this.updateLocalStorage();
+    },
+    updateLocalStorage: function() {
+      localStorage.setItem('todo-list', JSON.stringify(this.todos));
     }
   }
 };
