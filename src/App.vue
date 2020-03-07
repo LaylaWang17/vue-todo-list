@@ -1,5 +1,7 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <p class="title">Todos</p>
+  </div>
 </template>
 
 <script>
@@ -17,5 +19,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
 }
 </style>
