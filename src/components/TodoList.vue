@@ -24,6 +24,7 @@
         class="delete-btn"
         icon="el-icon-close"
         :underline="false"
+        @click="$emit('delete-todo', todo)"
       ></el-link>
     </el-col>
   </el-row>

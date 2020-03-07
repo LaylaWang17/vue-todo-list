@@ -9,6 +9,7 @@
         :initial-todo="todo"
         @toggle-active="toggleActive"
         @update-todo="updateTodo"
+        @delete-todo="deleteTodo"
       ></todo-list>
     </div>
   </div>
@@ -54,6 +55,12 @@ export default {
       const index = this.todos.indexOf(todo);
       if (index !== -1) {
         this.todos.splice(index, 1, todo);
+      }
+    },
+    deleteTodo: function(todo) {
+      const index = this.todos.indexOf(todo);
+      if (index !== -1) {
+        this.todos.splice(index, 1);
       }
     },
     updateLocalStorage: function() {
