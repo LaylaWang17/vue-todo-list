@@ -10,7 +10,14 @@
       ></el-button>
     </el-col>
     <el-col :span="20">
-      <input class="todo" :class="todoStatus" v-model="input" />
+      <form @submit.prevent="updateTodo">
+        <input
+          class="todo"
+          :class="todoStatus"
+          v-model="input"
+          @change="updateTodo"
+        />
+      </form>
     </el-col>
     <el-col :span="2">
       <el-link
@@ -29,7 +36,6 @@ export default {
   },
   data() {
     return {
-      todo: this.initialTodo,
       input: this.initialTodo.content
     };
   },
@@ -39,6 +45,15 @@ export default {
     },
     todoStatus: function() {
       return this.initialTodo.active ? '' : 'completed';
+    },
+    todo: function() {
+      return this.initialTodo;
+    }
+  },
+  methods: {
+    updateTodo: function() {
+      this.todo.content = this.input;
+      this.$emit('update-todo', this.todo);
     }
   }
 };

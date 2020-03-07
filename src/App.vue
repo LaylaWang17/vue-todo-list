@@ -8,6 +8,7 @@
         :key="todo.id"
         :initial-todo="todo"
         @toggle-active="toggleActive"
+        @update-todo="updateTodo"
       ></todo-list>
     </div>
   </div>
@@ -46,6 +47,12 @@ export default {
       const index = this.todos.indexOf(todo);
       if (index !== -1) {
         todo.active = !todo.active;
+        this.todos.splice(index, 1, todo);
+      }
+    },
+    updateTodo: function(todo) {
+      const index = this.todos.indexOf(todo);
+      if (index !== -1) {
         this.todos.splice(index, 1, todo);
       }
     },
