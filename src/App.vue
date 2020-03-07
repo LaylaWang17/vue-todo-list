@@ -2,18 +2,21 @@
   <div id="app">
     <p class="title">Todos</p>
     <todo-input @add-todo="addTodo"></todo-input>
-    <ul>
-      <li v-for="todo in todos" :key="todo.id">{{ todo.content }}</li>
-    </ul>
+    <div class="todo-list-wrapper">
+      <todo-list v-for="todo in todos" :key="todo.id" :todo="todo"></todo-list>
+    </div>
   </div>
 </template>
 
 <script>
 import TodoInput from './components/TodoInput.vue';
+import TodoList from './components/TodoList.vue';
+
 export default {
   name: 'App',
   components: {
-    TodoInput
+    TodoInput,
+    TodoList
   },
   data() {
     return {
@@ -27,7 +30,8 @@ export default {
     addTodo: function(input) {
       this.todos.push({
         id: Date.now(),
-        content: input
+        content: input,
+        active: true
       });
       this.updateLocalStorage();
     },
@@ -52,5 +56,9 @@ export default {
 .title {
   font-size: 30px;
   font-weight: bold;
+}
+
+.todo-list-wrapper {
+  margin: 20px 5px;
 }
 </style>
