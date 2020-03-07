@@ -24,7 +24,7 @@ export default {
     };
   },
   created: function() {
-    this.todos = JSON.parse(localStorage.getItem('todo-list'));
+    this.todos = JSON.parse(localStorage.getItem('todo-list')) || [];
   },
   methods: {
     addTodo: function(input) {
