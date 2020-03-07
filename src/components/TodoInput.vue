@@ -13,14 +13,7 @@
     </el-input>
   </form>
 </template>
-<style>
-.input {
-  font-size: 16px !important;
-}
-.select-all-btn {
-  font-size: 20px !important;
-}
-</style>
+
 <script>
 export default {
   data() {
@@ -30,3 +23,12 @@ export default {
   }
 };
 </script>
+
+<style>
+.input {
+  font-size: 16px !important;
+}
+.select-all-btn {
+  font-size: 20px !important;
+}
+</style>
