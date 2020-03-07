@@ -10,7 +10,7 @@
       ></el-button>
     </el-col>
     <el-col :span="20">
-      <input class="todo" v-model="input" />
+      <input class="todo" :class="todoStatus" v-model="input" />
     </el-col>
     <el-col :span="2">
       <el-link
@@ -36,6 +36,9 @@ export default {
   computed: {
     type: function() {
       return this.initialTodo.active ? '' : 'primary';
+    },
+    todoStatus: function() {
+      return this.initialTodo.active ? '' : 'completed';
     }
   }
 };
@@ -55,5 +58,9 @@ export default {
   color: #2c3e50;
   width: 100%;
   padding: 0px 15px;
+}
+.completed {
+  color: #bfc1c5;
+  text-decoration: line-through;
 }
 </style>
