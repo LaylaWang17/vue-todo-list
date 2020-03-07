@@ -2,7 +2,7 @@
   <el-row class="todo-wrapper">
     <el-col :span="2">
       <el-button
-        :type="type"
+        :type="checkBtnType"
         icon="el-icon-check"
         size="mini"
         circle
@@ -40,7 +40,7 @@ export default {
     };
   },
   computed: {
-    type: function() {
+    checkBtnType: function() {
       return this.initialTodo.active ? '' : 'primary';
     },
     todoStatus: function() {
