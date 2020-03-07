@@ -3,7 +3,12 @@
     <p class="title">Todos</p>
     <todo-input @add-todo="addTodo"></todo-input>
     <div class="todo-list-wrapper">
-      <todo-list v-for="todo in todos" :key="todo.id" :todo="todo"></todo-list>
+      <todo-list
+        v-for="todo in todos"
+        :key="todo.id"
+        :initial-todo="todo"
+        @toggle-active="toggleActive"
+      ></todo-list>
     </div>
   </div>
 </template>
@@ -26,6 +31,9 @@ export default {
   created: function() {
     this.todos = JSON.parse(localStorage.getItem('todo-list')) || [];
   },
+  updated: function() {
+    this.updateLocalStorage();
+  },
   methods: {
     addTodo: function(input) {
       this.todos.push({
@@ -33,7 +41,13 @@ export default {
         content: input,
         active: true
       });
-      this.updateLocalStorage();
+    },
+    toggleActive: function(todo) {
+      const index = this.todos.indexOf(todo);
+      if (index !== -1) {
+        todo.active = !todo.active;
+        this.todos.splice(index, 1, todo);
+      }
     },
     updateLocalStorage: function() {
       localStorage.setItem('todo-list', JSON.stringify(this.todos));

@@ -6,6 +6,7 @@
         icon="el-icon-check"
         size="mini"
         circle
+        @click="$emit('toggle-active', todo)"
       ></el-button>
     </el-col>
     <el-col :span="20">
@@ -24,13 +25,18 @@
 <script>
 export default {
   props: {
-    todo: Object
+    initialTodo: Object
   },
   data() {
     return {
-      input: this.todo.content,
-      type: this.todo.active ? '' : 'primary'
+      todo: this.initialTodo,
+      input: this.initialTodo.content
     };
+  },
+  computed: {
+    type: function() {
+      return this.initialTodo.active ? '' : 'primary';
+    }
   }
 };
 </script>
