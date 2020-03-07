@@ -20,6 +20,9 @@ export default {
       todos: []
     };
   },
+  created: function() {
+    this.todos = JSON.parse(localStorage.getItem('todo-list'));
+  },
   methods: {
     addTodo: function(input) {
       this.todos.push({
