@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="$emit('add-todo', input)">
+  <form @submit.prevent="addTodo">
     <el-input
       class="input"
       placeholder="What needs to be done?"
@@ -20,6 +20,12 @@ export default {
     return {
       input: ''
     };
+  },
+  methods: {
+    addTodo: function() {
+      this.$emit('add-todo', this.input);
+      this.input = '';
+    }
   }
 };
 </script>
