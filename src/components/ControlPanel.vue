@@ -20,8 +20,9 @@
         class="clear-btn"
         :class="{ hide: hideClearBtn }"
         :underline="false"
-        >Clear completed</el-link
       >
+        Clear completed
+      </el-link>
     </el-col>
   </el-row>
 </template>
