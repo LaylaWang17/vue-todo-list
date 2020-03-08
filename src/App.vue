@@ -12,18 +12,21 @@
         @delete-todo="deleteTodo"
       ></todo-list>
     </div>
+    <control-panel></control-panel>
   </div>
 </template>
 
 <script>
 import TodoInput from './components/TodoInput.vue';
 import TodoList from './components/TodoList.vue';
+import ControlPanel from './components/ControlPanel.vue';
 
 export default {
   name: 'App',
   components: {
     TodoInput,
-    TodoList
+    TodoList,
+    ControlPanel
   },
   data() {
     return {
