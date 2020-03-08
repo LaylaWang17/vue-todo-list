@@ -15,6 +15,7 @@
     <control-panel
       :left-item-amount="leftItemAmount"
       :hide-clear-btn="hideClearBtn"
+      @clear-completed="clearCompleted"
     ></control-panel>
   </div>
 </template>
@@ -89,6 +90,9 @@ export default {
       if (index !== -1) {
         this.todos.splice(index, 1);
       }
+    },
+    clearCompleted: function() {
+      this.todos = this.todos.filter(item => item.active);
     },
     updateLocalStorage: function() {
       localStorage.setItem('todo-list', JSON.stringify(this.todos));

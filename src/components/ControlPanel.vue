@@ -20,6 +20,7 @@
         class="clear-btn"
         :class="{ hide: hideClearBtn }"
         :underline="false"
+        @click="$emit('clear-completed')"
       >
         Clear completed
       </el-link>
