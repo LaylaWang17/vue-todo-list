@@ -48,6 +48,7 @@ export default {
 .el-tabs__nav-scroll {
   display: flex;
   justify-content: center;
+  height: 35px;
 }
 .el-tabs__item {
   min-width: 60px;
