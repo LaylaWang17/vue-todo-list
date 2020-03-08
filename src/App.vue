@@ -12,7 +12,7 @@
         @delete-todo="deleteTodo"
       ></todo-list>
     </div>
-    <control-panel></control-panel>
+    <control-panel :left-item-amount="leftItemAmount"></control-panel>
   </div>
 </template>
 
@@ -32,6 +32,11 @@ export default {
     return {
       todos: []
     };
+  },
+  computed: {
+    leftItemAmount: function() {
+      return this.todos.filter(item => item.active).length;
+    }
   },
   created: function() {
     this.todos = JSON.parse(localStorage.getItem('todo-list')) || [];

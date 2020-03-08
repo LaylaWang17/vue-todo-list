@@ -23,9 +23,11 @@
 
 <script>
 export default {
+  props: {
+    leftItemAmount: Number
+  },
   data() {
     return {
-      leftItemAmount: 0,
       activeTab: 'all'
     };
   },
