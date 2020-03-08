@@ -12,7 +12,10 @@
         @delete-todo="deleteTodo"
       ></todo-list>
     </div>
-    <control-panel :left-item-amount="leftItemAmount"></control-panel>
+    <control-panel
+      :left-item-amount="leftItemAmount"
+      :hide-clear-btn="hideClearBtn"
+    ></control-panel>
   </div>
 </template>
 
@@ -36,6 +39,9 @@ export default {
   computed: {
     leftItemAmount: function() {
       return this.todos.filter(item => item.active).length;
+    },
+    hideClearBtn: function() {
+      return this.leftItemAmount === this.todos.length;
     }
   },
   created: function() {

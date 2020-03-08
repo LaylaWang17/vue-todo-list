@@ -16,7 +16,12 @@
       </el-tabs>
     </el-col>
     <el-col :span="7" class="clear-btn-wrapper">
-      <el-link class="clear-btn" :underline="false">Clear completed</el-link>
+      <el-link
+        class="clear-btn"
+        :class="{ hide: hideClearBtn }"
+        :underline="false"
+        >Clear completed</el-link
+      >
     </el-col>
   </el-row>
 </template>
@@ -24,7 +29,8 @@
 <script>
 export default {
   props: {
-    leftItemAmount: Number
+    leftItemAmount: Number,
+    hideClearBtn: Boolean
   },
   data() {
     return {
@@ -57,5 +63,8 @@ export default {
 }
 .clear-btn-wrapper {
   text-align: right;
+}
+.hide {
+  opacity: 0;
 }
 </style>
