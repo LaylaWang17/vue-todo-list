@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p class="title">Todos</p>
-    <todo-input @add-todo="addTodo" @select-all="markAllCompleted"></todo-input>
+    <todo-input @add-todo="addTodo" @select-all="toggleAllStatus"></todo-input>
     <div class="todo-list-wrapper">
       <todo-list
         v-for="todo in todos"
@@ -58,11 +58,18 @@ export default {
         active: true
       });
     },
-    markAllCompleted: function() {
-      this.todos = this.todos.map(item => {
-        item.active = !item.active;
-        return item;
-      });
+    toggleAllStatus: function() {
+      if (this.leftItemAmount === 0) {
+        this.todos = this.todos.map(item => {
+          item.active = true;
+          return item;
+        });
+      } else {
+        this.todos = this.todos.map(item => {
+          item.active = false;
+          return item;
+        });
+      }
     },
     toggleActive: function(todo) {
       const index = this.todos.indexOf(todo);
