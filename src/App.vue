@@ -4,7 +4,7 @@
     <todo-input @add-todo="addTodo" @select-all="toggleAllStatus"></todo-input>
     <div class="todo-list-wrapper">
       <todo-list
-        v-for="todo in todos"
+        v-for="todo in displayedTodos"
         :key="todo.id"
         :initial-todo="todo"
         @toggle-active="toggleActive"
@@ -16,6 +16,7 @@
       :left-item-amount="leftItemAmount"
       :hide-clear-btn="hideClearBtn"
       @clear-completed="clearCompleted"
+      @toggle-tab="toggleTab"
     ></control-panel>
   </div>
 </template>
@@ -34,7 +35,8 @@ export default {
   },
   data() {
     return {
-      todos: []
+      todos: [],
+      activeTab: 'all'
     };
   },
   computed: {
@@ -43,6 +45,22 @@ export default {
     },
     hideClearBtn: function() {
       return this.leftItemAmount === this.todos.length;
+    },
+    activeTodos: function() {
+      return this.todos.filter(item => item.active);
+    },
+    completedTodos: function() {
+      return this.todos.filter(item => !item.active);
+    },
+    displayedTodos: function() {
+      switch (this.activeTab) {
+        case 'active':
+          return this.activeTodos;
+        case 'completed':
+          return this.completedTodos;
+        default:
+          return this.todos;
+      }
     }
   },
   created: function() {
@@ -93,6 +111,9 @@ export default {
     },
     clearCompleted: function() {
       this.todos = this.todos.filter(item => item.active);
+    },
+    toggleTab: function(activeTab) {
+      this.activeTab = activeTab;
     },
     updateLocalStorage: function() {
       localStorage.setItem('todo-list', JSON.stringify(this.todos));

@@ -9,7 +9,7 @@
       <span>{{ leftItemAmount }}</span> items left
     </el-col>
     <el-col :span="12">
-      <el-tabs v-model="activeTab" @tab-click="handleClick">
+      <el-tabs v-model="activeTab" @tab-click="$emit('toggle-tab', activeTab)">
         <el-tab-pane label="All" name="all"></el-tab-pane>
         <el-tab-pane label="Active" name="active"></el-tab-pane>
         <el-tab-pane label="Completed" name="completed"></el-tab-pane>
@@ -38,11 +38,6 @@ export default {
     return {
       activeTab: 'all'
     };
-  },
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
-    }
   }
 };
 </script>
