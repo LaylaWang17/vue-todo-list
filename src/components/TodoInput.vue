@@ -1,10 +1,6 @@
 <template>
   <form @submit.prevent="addTodo">
-    <el-input
-      class="input"
-      placeholder="What needs to be done?"
-      v-model="input"
-    >
+    <el-input class="input" placeholder="What needs to be done?" v-model="input">
       <el-button
         class="select-all-btn"
         slot="prepend"
@@ -19,13 +15,13 @@
 export default {
   data() {
     return {
-      input: ''
+      input: ""
     };
   },
   methods: {
-    addTodo: function() {
-      this.$emit('add-todo', this.input);
-      this.input = '';
+    addTodo() {
+      this.$emit("add-todo", this.input);
+      this.input = "";
     }
   }
 };

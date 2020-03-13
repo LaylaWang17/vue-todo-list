@@ -36,19 +36,19 @@ export default {
     };
   },
   computed: {
-    activeTodos: function() {
+    activeTodos() {
       return this.todos.filter(item => item.active);
     },
-    completedTodos: function() {
+    completedTodos() {
       return this.todos.filter(item => !item.active);
     },
-    leftItemAmount: function() {
+    leftItemAmount() {
       return this.activeTodos.length;
     },
-    completedItemAmount: function() {
+    completedItemAmount() {
       return this.completedTodos.length;
     },
-    displayedTodos: function() {
+    displayedTodos() {
       switch (this.activeTab) {
         case "active":
           return this.activeTodos;
@@ -59,21 +59,21 @@ export default {
       }
     }
   },
-  created: function() {
+  created() {
     this.todos = JSON.parse(localStorage.getItem("todo-list")) || [];
   },
-  updated: function() {
+  updated() {
     localStorage.setItem("todo-list", JSON.stringify(this.todos));
   },
   methods: {
-    addTodo: function(input) {
+    addTodo(input) {
       this.todos.push({
         id: Date.now(),
         content: input,
         active: true
       });
     },
-    toggleAllStatus: function() {
+    toggleAllStatus() {
       if (this.leftItemAmount === 0) {
         this.todos = this.todos.map(item => {
           item.active = true;
@@ -86,29 +86,29 @@ export default {
         });
       }
     },
-    toggleActive: function(todo) {
+    toggleActive(todo) {
       const index = this.todos.indexOf(todo);
       if (index !== -1) {
         todo.active = !todo.active;
         this.todos.splice(index, 1, todo);
       }
     },
-    updateTodo: function(todo) {
+    updateTodo(todo) {
       const index = this.todos.indexOf(todo);
       if (index !== -1) {
         this.todos.splice(index, 1, todo);
       }
     },
-    deleteTodo: function(todo) {
+    deleteTodo(todo) {
       const index = this.todos.indexOf(todo);
       if (index !== -1) {
         this.todos.splice(index, 1);
       }
     },
-    clearCompleted: function() {
+    clearCompleted() {
       this.todos = this.todos.filter(item => item.active);
     },
-    toggleTab: function(activeTab) {
+    toggleTab(activeTab) {
       this.activeTab = activeTab;
     }
   }
