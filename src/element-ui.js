@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import { Input, Button, Link, Row, Col, Tabs, TabPane } from 'element-ui';
+import Vue from "vue";
+import { Input, Button, Link, Row, Col, Tabs, TabPane } from "element-ui";
 
 Vue.use(Input);
 Vue.use(Button);
