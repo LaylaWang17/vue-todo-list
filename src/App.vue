@@ -2,16 +2,12 @@
   <div id="app">
     <p class="title">Todos</p>
     <todo-input @add-todo="addTodo" @select-all="toggleAllStatus"></todo-input>
-    <div class="todo-list-wrapper">
-      <todo-list
-        v-for="todo in displayedTodos"
-        :key="todo.id"
-        :initial-todo="todo"
-        @toggle-active="toggleActive"
-        @update-todo="updateTodo"
-        @delete-todo="deleteTodo"
-      ></todo-list>
-    </div>
+    <todo-list
+      :initial-todos="displayedTodos"
+      @toggle-active="toggleActive"
+      @update-todo="updateTodo"
+      @delete-todo="deleteTodo"
+    ></todo-list>
     <control-panel
       :left-item-amount="leftItemAmount"
       :hide-clear-btn="hideClearBtn"
@@ -22,12 +18,12 @@
 </template>
 
 <script>
-import TodoInput from './components/TodoInput.vue';
-import TodoList from './components/TodoList.vue';
-import ControlPanel from './components/ControlPanel.vue';
+import TodoInput from "./components/TodoInput.vue";
+import TodoList from "./components/TodoList.vue";
+import ControlPanel from "./components/ControlPanel.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     TodoInput,
     TodoList,
@@ -36,13 +32,10 @@ export default {
   data() {
     return {
       todos: [],
-      activeTab: 'all'
+      activeTab: "all"
     };
   },
   computed: {
-    leftItemAmount: function() {
-      return this.todos.filter(item => item.active).length;
-    },
     hideClearBtn: function() {
       return this.leftItemAmount === this.todos.length;
     },
@@ -52,11 +45,14 @@ export default {
     completedTodos: function() {
       return this.todos.filter(item => !item.active);
     },
+    leftItemAmount: function() {
+      return this.activeTodos.length;
+    },
     displayedTodos: function() {
       switch (this.activeTab) {
-        case 'active':
+        case "active":
           return this.activeTodos;
-        case 'completed':
+        case "completed":
           return this.completedTodos;
         default:
           return this.todos;
@@ -64,10 +60,10 @@ export default {
     }
   },
   created: function() {
-    this.todos = JSON.parse(localStorage.getItem('todo-list')) || [];
+    this.todos = JSON.parse(localStorage.getItem("todo-list")) || [];
   },
   updated: function() {
-    this.updateLocalStorage();
+    localStorage.setItem("todo-list", JSON.stringify(this.todos));
   },
   methods: {
     addTodo: function(input) {
@@ -114,9 +110,6 @@ export default {
     },
     toggleTab: function(activeTab) {
       this.activeTab = activeTab;
-    },
-    updateLocalStorage: function() {
-      localStorage.setItem('todo-list', JSON.stringify(this.todos));
     }
   }
 };
@@ -136,9 +129,5 @@ export default {
 .title {
   font-size: 30px;
   font-weight: bold;
-}
-
-.todo-list-wrapper {
-  margin: 20px 5px;
 }
 </style>
