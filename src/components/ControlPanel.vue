@@ -1,10 +1,5 @@
 <template>
-  <el-row
-    class="control-panel"
-    type="flex"
-    align="middle"
-    justify="space-between"
-  >
+  <el-row class="control-panel" type="flex" align="middle" justify="space-between">
     <el-col :span="5" class="left-item-amount">
       <span>{{ leftItemAmount }}</span> items left
     </el-col>
@@ -21,9 +16,7 @@
         :class="{ hide: hideClearBtn }"
         :underline="false"
         @click="$emit('clear-completed')"
-      >
-        Clear completed
-      </el-link>
+      >Clear completed</el-link>
     </el-col>
   </el-row>
 </template>
@@ -32,12 +25,17 @@
 export default {
   props: {
     leftItemAmount: Number,
-    hideClearBtn: Boolean
+    completedItemAmount: Number
   },
   data() {
     return {
-      activeTab: 'all'
+      activeTab: "all"
     };
+  },
+  computed: {
+    hideClearBtn() {
+      return this.activeTab === "active" || this.completedItemAmount === 0;
+    }
   }
 };
 </script>

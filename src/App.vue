@@ -10,7 +10,7 @@
     ></todo-list>
     <control-panel
       :left-item-amount="leftItemAmount"
-      :hide-clear-btn="hideClearBtn"
+      :completed-item-amount="completedItemAmount"
       @clear-completed="clearCompleted"
       @toggle-tab="toggleTab"
     ></control-panel>
@@ -36,9 +36,6 @@ export default {
     };
   },
   computed: {
-    hideClearBtn: function() {
-      return this.leftItemAmount === this.todos.length;
-    },
     activeTodos: function() {
       return this.todos.filter(item => item.active);
     },
@@ -47,6 +44,9 @@ export default {
     },
     leftItemAmount: function() {
       return this.activeTodos.length;
+    },
+    completedItemAmount: function() {
+      return this.completedTodos.length;
     },
     displayedTodos: function() {
       switch (this.activeTab) {
