@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils";
 import TodoList from "../src/components/TodoList.vue";
+import Todo from "../src/components/Todo.vue";
 import "../src/element-ui";
 
 describe("TodoList", () => {
@@ -32,6 +33,6 @@ describe("TodoList", () => {
 
   test("should show todos", () => {
     expect(listWrapper.find(".empty-list").exists()).toBeFalsy();
-    expect(listWrapper.findAll(".todo-wrapper").length).toBe(2);
+    expect(listWrapper.findAll(Todo).length).toBe(2);
   });
 });
