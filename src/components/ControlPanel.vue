@@ -24,8 +24,14 @@
 <script>
 export default {
   props: {
-    leftItemAmount: Number,
-    completedItemAmount: Number
+    leftItemAmount: {
+      type: Number,
+      default: () => 0
+    },
+    completedItemAmount: {
+      type: Number,
+      default: () => 0
+    }
   },
   data() {
     return {
