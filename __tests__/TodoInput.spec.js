@@ -1,5 +1,4 @@
 import { mount } from "@vue/test-utils";
-import sinon from "sinon";
 
 import TodoInput from "../src/components/TodoInput.vue";
 import "../src/element-ui";
@@ -18,9 +17,9 @@ describe("TodoInput", () => {
   });
 
   test("should 'addTodo' method be called", () => {
-    const addTodo = sinon.stub();
+    const addTodo = jest.fn();
     defaultwrapper.setMethods({ addTodo: addTodo });
     defaultwrapper.trigger("submit");
-    expect(addTodo.called).toBeTruthy();
+    expect(addTodo).toHaveBeenCalled();
   });
 });
