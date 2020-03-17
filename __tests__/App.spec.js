@@ -1,4 +1,4 @@
-import { mount, shallowMount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 
 import App from "../src/App.vue";
 import TodoInput from "../src/components/TodoInput.vue";
@@ -10,7 +10,7 @@ describe("App", () => {
   let wrapper = null;
 
   beforeEach(() => {
-    wrapper = mount(App);
+    wrapper = shallowMount(App);
   });
 
   test("is a Vue instance", () => {

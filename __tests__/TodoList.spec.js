@@ -1,16 +1,17 @@
-import { mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
+
 import TodoList from "../src/components/TodoList.vue";
 import Todo from "../src/components/Todo.vue";
 import "../src/element-ui";
 
 describe("TodoList", () => {
-  const emptyListWrapper = mount(TodoList, {
+  const emptyListWrapper = shallowMount(TodoList, {
     propsData: {
       initialTodos: []
     }
   });
 
-  const listWrapper = mount(TodoList, {
+  const listWrapper = shallowMount(TodoList, {
     propsData: {
       initialTodos: [
         { id: 1, content: "eat", active: false },

@@ -1,4 +1,4 @@
-import { mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import Todo from "../src/components/Todo.vue";
 import "../src/element-ui";
 
@@ -9,13 +9,13 @@ describe("Todo", () => {
     active: true
   };
 
-  const activeTodoWrapper = mount(Todo, {
+  const activeTodoWrapper = shallowMount(Todo, {
     propsData: {
       initialTodo: todoData
     }
   });
 
-  const completedTodoWrapper = mount(Todo, {
+  const completedTodoWrapper = shallowMount(Todo, {
     propsData: {
       initialTodo: {
         ...todoData,
