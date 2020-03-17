@@ -3,7 +3,7 @@
     <el-col :span="5" class="left-item-amount">
       <span>{{ leftItemAmount }}</span> items left
     </el-col>
-    <el-col :span="12">
+    <el-col :span="12" class="tabs">
       <el-tabs v-model="activeTab" @tab-click="$emit('toggle-tab', activeTab)">
         <el-tab-pane label="All" name="all"></el-tab-pane>
         <el-tab-pane label="Active" name="active"></el-tab-pane>
@@ -46,26 +46,29 @@ export default {
 };
 </script>
 
-<style>
-.control-panel {
-  font-size: 14px;
-  color: #2c3e50;
-}
-.left-item-amount {
-  text-align: left;
-}
-.el-tabs__nav-scroll {
-  display: flex;
-  justify-content: center;
-  height: 35px;
-}
-.el-tabs__item {
-  min-width: 60px;
-}
-.clear-btn-wrapper {
-  text-align: right;
-}
-.hide {
-  opacity: 0;
-}
+<style lang="sass">
+.control-panel
+  font-size: 14px
+  color: #2c3e50
+
+  .left-item-amount
+    text-align: left
+
+  .tabs
+    display: flex
+    justify-content: center
+
+    .el-tabs__nav-scroll
+      display: flex
+      justify-content: center
+      height: 35px
+
+      .el-tabs__item
+        min-width: 60px
+
+  .clear-btn-wrapper
+    text-align: right
+
+    .hide
+      opacity: 0
 </style>

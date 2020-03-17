@@ -115,19 +115,17 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin: 60px auto;
-  width: 500px;
-}
+<style lang="sass" scoped>
+#app
+  font-family: Avenir, Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  text-align: center
+  color: #2c3e50
+  margin: 60px auto
+  width: 500px
 
-.title {
-  font-size: 30px;
-  font-weight: bold;
-}
+  .title
+    font-size: 30px
+    font-weight: bold
 </style>

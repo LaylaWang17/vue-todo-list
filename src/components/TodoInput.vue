@@ -27,11 +27,10 @@ export default {
 };
 </script>
 
-<style>
-.input {
-  font-size: 16px !important;
-}
-.select-all-btn {
-  font-size: 20px !important;
-}
+<style lang="sass" scoped>
+.input
+  font-size: 16px !important
+
+  .select-all-btn
+    font-size: 20px !important
 </style>

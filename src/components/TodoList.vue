@@ -25,19 +25,17 @@ export default {
 };
 </script>
 
-<style scoped>
-.todo-list-wrapper {
-  margin: 20px 0px;
-  padding: 0px 10px;
-  min-height: 100px;
-  max-height: 420px;
-  overflow: scroll;
-}
+<style lang="sass" scoped>
+.todo-list-wrapper
+  margin: 20px 0px
+  padding: 0px 10px
+  min-height: 100px
+  max-height: 420px
+  overflow: scroll
 
-.empty-list {
-  font-size: 20px;
-  font-weight: bold;
-  color: #bfc1c5;
-  padding-top: 30px;
-}
+  .empty-list
+    font-size: 20px
+    font-weight: bold
+    color: #bfc1c5
+    padding-top: 30px
 </style>
