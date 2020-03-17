@@ -1,4 +1,3 @@
-import Vue from "vue";
 import { shallowMount } from "@vue/test-utils";
 
 import ControlPanel from "../src/components/ControlPanel.vue";
@@ -42,7 +41,7 @@ describe("ControlPanel", () => {
       activeTab: "completed"
     });
 
-    Vue.nextTick(() => {
+    wrapper.vm.$nextTick(() => {
       expect(wrapper.find(".clear-btn").classes("hide")).toBeFalsy();
     });
   });
@@ -58,7 +57,7 @@ describe("ControlPanel", () => {
       activeTab: "active"
     });
 
-    Vue.nextTick(() => {
+    wrapper.vm.$nextTick(() => {
       expect(wrapper.find(".clear-btn").classes("hide")).toBeTruthy();
     });
   });
